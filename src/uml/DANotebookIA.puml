@@ -1,0 +1,24 @@
+@startuml
+start
+:Registrarse y iniciar sesión (RF-01);
+if (¿Credenciales válidas?) then (no)
+  :Recuperar contraseña (RF-03);
+  stop
+else (sí)
+endif
+
+:Seleccionar acción;
+
+if (¿Qué desea hacer?) then (Aprender)
+  :Consultar lecciones, tips y normativas (RF-05);
+elseif (Preguntar a la IA)
+  :Interactuar con agente (RF-09);
+  :Resolver pregunta (UC07);
+  :Consultar historial (RF-10);
+else (Administrar)
+  :Gestionar contenidos (UCA);
+endif
+
+:Cerrar sesión (RF-04);
+stop
+@enduml

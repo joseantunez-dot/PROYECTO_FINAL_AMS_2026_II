@@ -1,0 +1,31 @@
+@startwbs
+skinparam BackgroundColor transparent
+skinparam wbsDiagram {
+  BackgroundColor white
+  LineColor black
+  FontName Arial
+}
+* Proyecto: Aprendiendo con IA
+** Product Backlog
+*** Epic 1: Gestión de Usuarios
+**** HU-01: Registro e Inicio de Sesión
+***** Task: Diseñar UI de Login y Registro
+***** Task: Crear tabla de Usuarios en BD
+**** HU-02: Roles y Permisos
+***** Task: Habilitar vista de "Editor" en Perfil
+*** Epic 2: Módulos Educativos
+**** HU-03: Catálogo de Tips, Normas y Lecciones
+***** Task: Diseñar tarjetas de contenido
+**** HU-04: Gestión de Contenido (Editor)
+***** Task: Crear formulario para subir módulos
+***** BUG-01: El módulo no guarda la categoría
+*** Epic 3: Agente de IA
+**** HU-05: Chatbot de Autorespuesta 24/7
+***** Task: Maquetar widget flotante de chat
+***** Task: Conectar con API de IA externa
+** Sprint 1 (Desarrollo del MVP)
+*** Sprint Backlog
+**** HU-01 (En Curso)
+**** HU-03 (En Curso)
+**** HU-05 (En Curso)
+@endwbs

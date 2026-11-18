@@ -1,0 +1,65 @@
+@startuml
+entity "Usuario" as usuario {
+   id_usuario : PK
+  --
+  nombre
+  correo
+  rol
+  fecha_registro
+}
+
+entity "Leccion" as leccion {
+   id_leccion : PK
+  --
+  titulo
+  contenido
+  id_admin : FK
+}
+
+entity "Tip" as tip {
+   id_tip : PK
+  --
+  titulo
+  contenido
+  id_admin : FK
+}
+
+entity "Normatividad" as norma {
+   id_norma : PK
+  --
+  titulo
+  resumen
+  fuente
+  id_admin : FK
+}
+
+entity "Conversacion" as conv {
+   id_conversacion : PK
+  --
+  fecha_inicio
+  id_usuario : FK
+}
+
+entity "Mensaje" as msg {
+   id_mensaje : PK
+  --
+  emisor
+  contenido
+  fecha
+  id_conversacion : FK
+}
+
+entity "PreguntaFrecuente" as faq {
+   id_faq : PK
+  --
+  pregunta
+  respuesta
+}
+
+usuario ||--o{ conv  : "inicia"
+conv    ||--o{ msg   : "contiene"
+usuario ||--o{ leccion : "administra"
+usuario ||--o{ tip     : "administra"
+usuario ||--o{ norma   : "administra"
+
+@enduml

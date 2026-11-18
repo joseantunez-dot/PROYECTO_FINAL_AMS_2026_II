@@ -1,0 +1,30 @@
+@startuml
+left to right direction
+
+actor "Usuario" as User
+actor Administrador as Admin
+actor "Agente IA" as IA
+
+rectangle "Notebook IA Antunez" {
+  usecase "Registrarse y iniciar sesion\n(RF-01)" as UC01
+  usecase "Recuperar contraseña\n(RF-03)" as UC02
+  usecase "Cerrar sesión\n(RF-04)" as UC03
+  usecase "Consultar lecciones, tips y normativas\n(RF-05)" as UC04
+  usecase "Interactuar con agente\n(RF-09)" as UC05
+  usecase "Consultar historial\n(RF-10)" as UC06
+  usecase "Resolver pregunta" as UC07
+  usecase "Gestionar contenidos" as UCA
+}
+
+User --> UC01
+User --> UC02
+User --> UC03
+User --> UC04
+User --> UC05
+User --> UC06
+User --> UC07
+Admin --> UCA
+IA --> UC07
+
+
+@enduml

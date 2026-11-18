@@ -1,0 +1,34 @@
+@startgantt
+
+-- FASE I: PLANEACIÓN --
+[HU-01 - Problema y Objetivos] lasts 3 days
+[TASK-01 - Introducción y planteamiento] lasts 3 days
+
+[HU-02 - Alcance y Factibilidad] lasts 3 days
+[HU-02 - Alcance y Factibilidad] starts at [TASK-01 - Introducción y planteamiento]'s end
+[TASK-02 - Módulos del sistema] lasts 3 days
+[TASK-02 - Módulos del sistema] starts at [TASK-01 - Introducción y planteamiento]'s end
+
+-- FASE II: ANÁLISIS Y MODELAMIENTO --
+[HU-03 - Documentación de Requerimientos] lasts 4 days
+[HU-03 - Documentación de Requerimientos] starts at [TASK-02 - Módulos del sistema]'s end
+[TASK-03 - Req. Funcionales y No Funcionales] lasts 4 days
+[TASK-03 - Req. Funcionales y No Funcionales] starts at [TASK-02 - Módulos del sistema]'s end
+
+[HU-04 - Modelamiento UML] lasts 4 days
+[HU-04 - Modelamiento UML] starts at [TASK-03 - Req. Funcionales y No Funcionales]'s end
+[TASK-04 - Diagramas de Clases y Casos de uso] lasts 4 days
+[TASK-04 - Diagramas de Clases y Casos de uso] starts at [TASK-03 - Req. Funcionales y No Funcionales]'s end
+
+-- FASE III: DISEÑO --
+[HU-05 - Diseño de Interfaces] lasts 4 days
+[HU-05 - Diseño de Interfaces] starts at [TASK-04 - Diagramas de Clases y Casos de uso]'s end
+[TASK-05 - Wireframes en Balsamiq] lasts 4 days
+[TASK-05 - Wireframes en Balsamiq] starts at [TASK-04 - Diagramas de Clases y Casos de uso]'s end
+
+[HU-06 - Diseño de la Base de Datos] lasts 4 days
+[HU-06 - Diseño de la Base de Datos] starts at [TASK-05 - Wireframes en Balsamiq]'s end
+[TASK-06 - Diagrama Entidad-Relación] lasts 4 days
+[TASK-06 - Diagrama Entidad-Relación] starts at [TASK-05 - Wireframes en Balsamiq]'s end
+
+@endgantt

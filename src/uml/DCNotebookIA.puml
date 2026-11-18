@@ -1,0 +1,61 @@
+@startuml
+
+class Usuario {
+  - id: int
+  - nombre: String
+  - correo: String
+  - contrasenaHash: String
+  - fechaRegistro: Date
+  --
+  + registrarse()
+  + iniciarSesion()
+  + cerrarSesion()
+  + recuperarContrasena()
+}
+
+class Rol {
+  - id: int
+  - nombre: String
+}
+
+class ModuloLeccion {
+  - id: int
+  - titulo: String
+  - contenido: String
+  - explicacion: String
+  - orden: int
+  --
+  + consultarLecciones()
+  + verDetalle()
+}
+
+class ModuloTip {
+  - id: int
+  - titulo: String
+  - contenido: String
+  - categoria: String
+  --
+  + listarTips()
+}
+
+class ModuloNormatividad {
+  - id: int
+  - titulo: String
+  - resumen: String
+  - fuente: String
+  - fechaActualizacion: Date
+  --
+  + listarNormatividades()
+  + verDetalle()
+}
+
+class ChatAgente {
+  - id: int
+  - fechaInicio: Date
+  --
+  + iniciarConversacion()
+  + consultarHistorial()
+}
+Usuario "1" -- "1" Rol : tiene >
+Usuario "1" -- "1" ChatAgente : tiene >
+@enduml
