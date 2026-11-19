@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NotebookIA - Sistema de Autoaprendizaje</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ================= PANTALLAS DE ACCESO (Wireframes 1, 2 y 3) ================= -->
+  <section id="vista-auth" class="contenedor-auth">
+    <p class="subtitulo-sistema">NOTEBOOK IA Sistema de Autoaprendizaje</p>
+    <h1 class="logo-titulo"><span>((●))</span> NotebookIA</h1>
+
+    <!-- 1. Iniciar Sesión -->
+    <div id="form-login" class="caja-auth">
+      <h3>Ingresa tus datos</h3>
+      <label for="login-usuario">Usuario</label>
+      <input type="text" id="login-usuario" placeholder="Ej. alumno_uacm">
+
+      <label for="login-pass">Contraseña</label>
+      <input type="password" id="login-pass" placeholder="••••••••">
+
+      <a href="#" class="enlace-auth" onclick="cambiarAuth('form-recuperar')">¿Olvidaste tu contraseña?</a>
+
+      <div class="botones-auth">
+        <button class="btn-primario" onclick="iniciarSesion()">Iniciar sesión</button>
+        <button class="btn-secundario" onclick="cambiarAuth('form-registro')">Registrarse</button>
+      </div>
+    </div>
+
+    <!-- 2. Registro de Usuario -->
+    <div id="form-registro" class="caja-auth oculto">
+      <h3>Crear nueva cuenta</h3>
+      <label for="reg-usuario">Usuario</label>
+      <input type="text" id="reg-usuario" placeholder="Nombre de usuario">
+
+      <label for="reg-pass">Contraseña</label>
+      <input type="password" id="reg-pass" placeholder="Crea una contraseña">
+
+      <label for="reg-correo">Correo Electrónico</label>
+      <input type="email" id="reg-correo" placeholder="correo@ejemplo.com">
+
+      <div class="botones-auth">
+        <button class="btn-primario" onclick="registrarUsuario()">Registrarse</button>
+        <button class="btn-secundario" onclick="cambiarAuth('form-login')">Volver</button>
+      </div>
+    </div>
+
+    <!-- 3. Recuperar Contraseña -->
+    <div id="form-recuperar" class="caja-auth oculto">
+      <h3>Ingresa tu correo</h3>
+      <input type="email" id="rec-correo" placeholder="correo@ejemplo.com">
+      <a href="#" class="enlace-auth" onclick="cambiarAuth('form-login')">Regresar</a>
+      <div class="botones-auth">
+        <button class="btn-primario" onclick="recuperarPassword()">Enviar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= APLICACIÓN PRINCIPAL ================= -->
+  <div id="app-principal" class="oculto">
+    
+    <!-- Barra de Navegación Superior -->
+    <header class="navbar">
+      <nav class="tabs">
+        <button id="tab-menu" class="tab activa" onclick="mostrarVista('vista-menu')">Inicio</button>
+        <button id="tab-chat" class="tab" onclick="mostrarVista('vista-chat')">Chat Agente</button>
+        <button id="tab-contacto" class="tab" onclick="mostrarVista('vista-contacto')">Contacto</button>
+      </nav>
+      <div class="logo-nav"><span>((●))</span> NotebookIA</div>
+    </header>
+
+    <main class="contenido">
+
+      <!-- 4. Página Principal / Menú -->
+      <section id="vista-menu" class="vista">
+        <div class="grid-tarjetas">
+          <article class="tarjeta">
+            <h2>Tips</h2>
+            <p>Los mejores prompts, trucos y consejos para sacarle lo mejor a cada IA.</p>
+            <button class="btn-primario" onclick="mostrarVista('vista-tips')">Ver más</button>
+          </article>
+
+          <article class="tarjeta">
+            <h2>Normatividad IA</h2>
+            <p>Aprende más sobre el correcto uso de la IA con respecto a los derechos de autor y políticas.</p>
+            <button class="btn-primario" onclick="mostrarVista('vista-normativa')">Ver más</button>
+          </article>
+
+          <article class="tarjeta">
+            <h2>AutoAprendizaje</h2>
+            <p>Realiza test de evaluación para retroalimentar la app y descubrir qué tanto (des)conoces de las IA's.</p>
+            <button class="btn-primario" onclick="mostrarVista('vista-test')">Ver más</button>
+          </article>
+        </div>
+      </section>
+
+      <!-- 5. Módulo Tips -->
+      <section id="vista-tips" class="vista oculto">
+        <h2 class="titulo-modulo">Módulo de Tips y Consejos</h2>
+        <div class="grid-tarjetas">
+          <article class="tarjeta">
+            <h3>Tip 1</h3>
+            <p><strong>¿Para qué sirve cada IA?</strong></p>
+            <p id="detalle-tip-1" class="detalle-oculto">Los modelos de texto sirven para resumir y redactar; los de imagen para diseño conceptual; y los de código para depurar programas.</p>
+            <button class="btn-primario" onclick="alternarDetalle('detalle-tip-1')">Ver más</button>
+          </article>
+
+          <article class="tarjeta">
+            <h3>Tip 2</h3>
+            <p><strong>Cómo armar el mejor prompt</strong></p>
+            <p id="detalle-tip-2" class="detalle-oculto">Define un rol, da contexto claro, especifica la tarea exacta e indica el formato de salida que esperas.</p>
+            <button class="btn-primario" onclick="alternarDetalle('detalle-tip-2')">Ver más</button>
+          </article>
+
+          <article class="tarjeta">
+            <h3>Tip 3</h3>
+            <p><strong>Seguridad y Privacidad</strong></p>
+            <p id="detalle-tip-3" class="detalle-oculto">Nunca ingreses contraseñas, datos bancarios ni información confidencial en chats públicos de IA.</p>
+            <button class="btn-primario" onclick="alternarDetalle('detalle-tip-3')">Ver más</button>
+          </article>
+        </div>
+      </section>
+
+      <!-- 6. Módulo Normativa -->
+      <section id="vista-normativa" class="vista oculto">
+        <h2 class="titulo-modulo">Módulo de Normatividad IA</h2>
+        <div class="grid-tarjetas">
+          <article class="tarjeta">
+            <h3>Reglamento de IA Unión Europea</h3>
+            <p>Clasificación de riesgos y protección de los derechos fundamentales.</p>
+            <p id="detalle-norma-1" class="detalle-oculto"><em>Fuente: EU AI Act.</em> Prohíbe sistemas de riesgo inaceptable y exige transparencia en contenidos generados por IA.</p>
+            <button class="btn-primario" onclick="alternarDetalle('detalle-norma-1')">Ver más</button>
+          </article>
+
+          <article class="tarjeta">
+            <h3>Gestión de Riesgos de IA</h3>
+            <p>Identificación, evaluación y reducción de riesgos asociados a la IA.</p>
+            <p id="detalle-norma-2" class="detalle-oculto"><em>Fuente: Marco NIST AI RMF.</em> Promueve sistemas confiables, explicables y libres de sesgos discriminatorios.</p>
+            <button class="btn-primario" onclick="alternarDetalle('detalle-norma-2')">Ver más</button>
+          </article>
+
+          <article class="tarjeta">
+            <h3>Derechos de Autor y Ética</h3>
+            <p>Protección de los ciudadanos frente a sistemas automatizados.</p>
+            <p id="detalle-norma-3" class="detalle-oculto"><em>Fuente: Lineamientos UNESCO.</em> El contenido generado debe verificarse para evitar plagio y desinformación.</p>
+            <button class="btn-primario" onclick="alternarDetalle('detalle-norma-3')">Ver más</button>
+          </article>
+        </div>
+      </section>
+
+      <!-- 7. Módulo Test (AutoAprendizaje) -->
+      <section id="vista-test" class="vista oculto">
+        <h2 class="titulo-modulo">Módulo de AutoAprendizaje (Test)</h2>
+        <div class="grid-tarjetas">
+          <article class="tarjeta">
+            <h3>Test 1</h3>
+            <p>¿Qué es una IA generativa?</p>
+            <button class="btn-primario" onclick="iniciarTest(1)">Entrar</button>
+          </article>
+
+          <article class="tarjeta">
+            <h3>Test 2</h3>
+            <p>Tipos de IA's y sus límites</p>
+            <button class="btn-primario" onclick="iniciarTest(2)">Entrar</button>
+          </article>
+
+          <article class="tarjeta">
+            <h3>Test 3</h3>
+            <p>Usos responsables más frecuentes</p>
+            <button class="btn-primario" onclick="iniciarTest(3)">Entrar</button>
+          </article>
+        </div>
+
+        <div id="caja-quiz" class="caja-quiz oculto">
+          <h3 id="quiz-pregunta"></h3>
+          <div id="quiz-opciones" class="opciones-quiz"></div>
+          <p id="quiz-resultado" class="resultado-quiz"></p>
+        </div>
+      </section>
+
+      <!-- 8. Chat Agente -->
+      <section id="vista-chat" class="vista oculto">
+        <div class="layout-chat">
+          <aside class="historial-chat">
+            <h4>Historial</h4>
+            <ul id="lista-historial">
+              <li onclick="cargarChatDemo('¿Cómo hago un buen prompt?')">Chat 1: Prompts</li>
+              <li onclick="cargarChatDemo('¿Es seguro subir datos personales?')">Chat 2: Privacidad</li>
+              <li onclick="cargarChatDemo('¿Qué dice la ley sobre IA?')">Chat 3: Normativas</li>
+            </ul>
+          </aside>
+
+          <div class="ventana-chat">
+            <div class="chat-header">Notebook Agent</div>
+            <div id="mensajes-chat" class="chat-mensajes">
+              <div class="mensaje agente"><strong>Bienvenido.</strong> Soy tu asistente sobre uso responsable de IA generativa. ¿Qué deseas saber?</div>
+            </div>
+            <div class="chat-input">
+              <input type="text" id="input-pregunta" placeholder="¿Qué deseas saber?" onkeypress="if(event.key==='Enter') enviarPregunta()">
+              <button class="btn-primario" onclick="enviarPregunta()">Enviar</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9. Contacto -->
+      <section id="vista-contacto" class="vista oculto">
+        <div class="grid-tarjetas">
+          <article class="tarjeta">
+            <h3>¿Quiénes somos?</h3>
+            <p>Conócenos: Plataforma educativa desarrollada en la UACM para fomentar el uso ético de la IA.</p>
+            <button class="btn-primario" onclick="alert('Proyecto NotebookIA - Ingeniería de Software UACM')">Ver más</button>
+          </article>
+
+          <article class="tarjeta">
+            <h3>Únete</h3>
+            <p>Colabora con nosotros aportando nuevos tips, guías o recursos educativos.</p>
+            <button class="btn-primario" onclick="alert('Envía tus aportes a: colabora@notebookia.edu.mx')">Ver más</button>
+          </article>
+
+          <article class="tarjeta">
+            <h3>Bugs</h3>
+            <p>Reporta errores o fallos técnicos en la plataforma.</p>
+            <button class="btn-primario" onclick="alert('Reporte enviado al equipo de Sistemas Antunez.')">Ver más</button>
+          </article>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="footer">
+      <span>Derechos reservados Sistemas Antunez SA de CV</span>
+      <div>
+        <button id="btn-regresar" class="btn-secundario oculto" onclick="mostrarVista('vista-menu')">Regresar</button>
+        <button id="btn-salir" class="btn-peligro" onclick="cerrarSesion()">Salir</button>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
